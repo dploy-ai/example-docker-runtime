@@ -3,6 +3,11 @@ from flask import Flask, request
 app = Flask(__name__)
 
 
+@app.route('/healthz/', methods=['GET'])
+def health_check():
+    return "healthy"
+
+
 @app.route('/')
 def hello():
     return "Hello World!"

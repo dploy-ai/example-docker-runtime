@@ -1,0 +1,8 @@
+model_uuid: 85e22d2d-a635-4db7-9f13-88919f658307
+spec_version: v2
+spec:
+  base: docker
+  args:
+    target_port: 5000
+deployment:
+  replicas: 1
