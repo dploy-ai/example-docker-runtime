@@ -1,11 +1,7 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
+from iris.predict import predict
 
 app = Flask(__name__)
-
-
-@app.route('/healthz/', methods=['GET'])
-def health_check():
-    return "healthy"
 
 
 @app.route('/')
@@ -13,9 +9,10 @@ def hello():
     return "Hello World!"
 
 
-@app.route('/post', methods=['POST'])
+@app.route('/predict/', methods=['POST'])
 def post():
-    return request.get_json()
+    data = request.get_json()
+    return jsonify(predict(data))
 
 
 if __name__ == '__main__':
